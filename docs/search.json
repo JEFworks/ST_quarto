@@ -1,0 +1,9 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Spatial Transcriptomics Browser with Quarto",
+    "section": "",
+    "text": "data = FileAttachment(\"xenium_breast_cancer_subset.csv\").csv({ typed: true })\ncolnames = Object.keys(data[0])\ncolnames\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nviewof gene = Inputs.select(\n  colnames,\n  {value: colnames[1]}\n)\n\n\n\n\n\n\n\nPlot.plot({\n  inset: 10,  \n  grid: false,\n  color: {\n    legend: true,\n    type: \"log\",\n  },\n  marks: [\n    Plot.raster(data, {\n               y: \"aligned_y\",\n               x: \"aligned_x\",\n               fill: gene,\n               interpolate: \"nearest\"\n               })\n  ]\n})"
+  }
+]

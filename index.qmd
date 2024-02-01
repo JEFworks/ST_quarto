@@ -1,0 +1,32 @@
+```{ojs}
+data = FileAttachment("xenium_breast_cancer_subset.csv").csv({ typed: true })
+colnames = Object.keys(data[0])
+colnames
+```
+
+```{ojs}
+viewof gene = Inputs.select(
+  colnames,
+  {value: colnames[1]}
+)
+```
+
+```{ojs}
+Plot.plot({
+  inset: 10,  
+  grid: false,
+  color: {
+    legend: true,
+    type: "log",
+  },
+  marks: [
+    Plot.raster(data, {
+ 		       y: "aligned_y",
+   		       x: "aligned_x",
+		       fill: gene,
+		       interpolate: "nearest"
+		       })
+  ]
+})
+```
+
